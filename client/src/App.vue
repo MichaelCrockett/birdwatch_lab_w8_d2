@@ -24,6 +24,10 @@ export default {
   },
   mounted(){
     this.fetchData();
+
+    eventBus.$on('sighting-deleted', id => {
+      this.sightings = this.sightings.filter(sighting => sighting._id !== id);
+    })
   },
   methods: {
     fetchData(){
